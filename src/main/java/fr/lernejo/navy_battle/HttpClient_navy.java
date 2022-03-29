@@ -9,18 +9,16 @@ import java.net.http.HttpResponse;
 public class HttpClient_navy {
     private final HttpClient client;
     public final int port;
-    public final String url;
 
-    public HttpClient_navy(int port, String url) {
+    public HttpClient_navy(int port) {
         this.client = HttpClient.newHttpClient();
         this.port = port;
-        this.url = url;
 
     }
 
-    public void SendStart() throws IOException, InterruptedException {
+    public void SendStart(String url) throws IOException, InterruptedException {
         HttpRequest requestPost = HttpRequest.newBuilder()
-            .uri(URI.create(this.url + "/api/game/start"))
+            .uri(URI.create(url + "/api/game/start"))
             .setHeader("Accept", "application/json")
             .setHeader("Content-Type", "application/json")
             .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}"))            .build();
