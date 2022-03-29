@@ -1,6 +1,5 @@
 package fr.lernejo.navy_battle;
 
-import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -16,6 +15,7 @@ public class HttpServer_navy {
         ExecutorService executorService = Executors.newFixedThreadPool(1);//Executors.newSingleThreadExecutor();
         this.server.setExecutor(executorService);
         server.createContext("/ping").setHandler(new HttpPingHandler());
+        server.createContext("/api/game/start").setHandler(new HttpPingHandler());
     }
 
     public void start() {
