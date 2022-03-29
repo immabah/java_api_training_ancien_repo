@@ -15,7 +15,7 @@ public class HttpServer_navy {
         ExecutorService executorService = Executors.newFixedThreadPool(1);//Executors.newSingleThreadExecutor();
         this.server.setExecutor(executorService);
         server.createContext("/ping").setHandler(new HttpPingHandler());
-        server.createContext("/api/game/start").setHandler(new HttpPingHandler());
+        server.createContext("/api/game/start").setHandler(new HttpPostHandler(port));
     }
 
     public void start() {
