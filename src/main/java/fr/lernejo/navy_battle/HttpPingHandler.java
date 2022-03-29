@@ -8,7 +8,7 @@ import java.io.OutputStream;
 
 public class HttpPingHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
-        String body = "It's ok";
+        String body = "OK";
         exchange.sendResponseHeaders(200, body.length());
         try (OutputStream os = exchange.getResponseBody()) {
             os.write(body.getBytes());
