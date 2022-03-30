@@ -5,6 +5,7 @@ import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 
 public class HttpPostHandler implements HttpHandler {
     public final int port;
@@ -23,12 +24,13 @@ public class HttpPostHandler implements HttpHandler {
     }
     public void Response(HttpExchange httpExchange) throws IOException{
         String msg = "{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}";
+        String recev = new String(httpExchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
+        System.out.println(recev);
         httpExchange.getResponseHeaders().set("Content-type", "application/json");
         httpExchange.sendResponseHeaders(202, msg.length());
         try (OutputStream os = httpExchange.getResponseBody()){
             os.write(msg.getBytes());
         }
-        System.out.println("Connected");
 
     }
 }
