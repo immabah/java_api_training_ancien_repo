@@ -25,8 +25,8 @@ public class HttpClient_navy {
             .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}")).build();
 
         try{
-            HttpResponse<String> msg = client.send(requestPost, HttpResponse.BodyHandlers.ofString());
-        }
+            this.client.sendAsync(requestPost, HttpResponse.BodyHandlers.ofString()).thenAccept(r -> System.out.println("Reply: " +
+                r.statusCode() + " : " + r.body()));        }
         catch (Exception e) {
             e.printStackTrace();
         }
