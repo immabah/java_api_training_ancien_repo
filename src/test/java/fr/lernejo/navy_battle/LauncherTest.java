@@ -1,19 +1,16 @@
 package fr.lernejo.navy_battle;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 class LauncherTest {
     @Test
-    void Launcher1() {
-        Launcher launch1 = new Launcher();
-        launch1.main(new String[]{"8750"});
-    }
 
-    void Launcher2() {
+    void Launcher1() {
         Launcher launch2 = new Launcher();
         String[] argmt = new String[1];
-        arg[0] = "9876";
+        argmt[0] = "9876";
 
         try {
             Launcher.main(argmt);
@@ -21,6 +18,5 @@ class LauncherTest {
             e.printStackTrace();
         }
     }
+
 }
-
-
