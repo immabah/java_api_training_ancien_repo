@@ -17,7 +17,7 @@ public class HttpFireHdl  implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
        // exchange.sendResponseHeaders(code, response.length());
-        if (!exchange.getRequestMethod().equals("GET")) {
+        if (exchange.getRequestMethod().equals("GET")) {
             String msg = "{\"consequence\":\"sunk\",\"shipLeft\":true}";
             exchange.getResponseHeaders().add("Content-Type", "application/json");
             exchange.sendResponseHeaders(202, msg.getBytes().length);
