@@ -17,20 +17,15 @@ public class HttpPostHandler implements HttpHandler {
 
     public void handle(HttpExchange httpExchange) throws IOException {
         if (httpExchange.getRequestMethod().equals("POST")) {
-            String msg = "{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}";
-            String rcv = new String(httpExchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
-            System.out.println(rcv);
-            httpExchange.getResponseHeaders().set("Content-type", "application/json");
-            httpExchange.sendResponseHeaders(202, msg.length());
+            Response(httpExchange);
         } else {
             httpExchange.sendResponseHeaders(404, -1);
         }
     }
-    
     public void Response(HttpExchange httpExchange) throws IOException{
         String msg = "{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}";
-        String rcv = new String(httpExchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
-        System.out.println(rcv);
+        String rcs = new String(httpExchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
+        System.out.println(rcs);
         httpExchange.getResponseHeaders().set("Content-type", "application/json");
         httpExchange.sendResponseHeaders(202, msg.length());
         try (OutputStream os = httpExchange.getResponseBody()){
