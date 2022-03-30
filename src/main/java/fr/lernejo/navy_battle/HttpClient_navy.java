@@ -21,12 +21,15 @@ public class HttpClient_navy {
             .uri(URI.create(url + "/api/game/start"))
             .setHeader("Accept", "application/json")
             .setHeader("Content-Type", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}"))            .build();
+            .POST(HttpRequest.BodyPublishers.ofString("{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}")).build();
 
-        HttpClient cl = HttpClient.newHttpClient();
-        var clr = cl.send(requestPost, HttpResponse.BodyHandlers.ofString());
-        System.out.println(clr.statusCode());
-        System.out.println(clr.body());
+        try{
+            HttpResponse<String> msg = client.send(requestPost, HttpResponse.BodyHandlers.ofString());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 }

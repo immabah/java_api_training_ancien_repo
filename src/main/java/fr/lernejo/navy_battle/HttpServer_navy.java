@@ -16,6 +16,7 @@ public class HttpServer_navy {
         this.server.setExecutor(executorService);
         server.createContext("/ping").setHandler(new HttpPingHandler());
         server.createContext("/api/game/start").setHandler(new HttpPostHandler(port));
+        server.createContext("/api/game/fire").setHandler(new HttpFireHdl(port));
     }
 
     public void start() {

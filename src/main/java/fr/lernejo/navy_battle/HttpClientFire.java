@@ -9,6 +9,7 @@ import java.net.http.HttpResponse;
 public class HttpClientFire {
     private final HttpClient Clt = HttpClient.newHttpClient();
 
+
     public void Clientfire(String url, String cell) {
         String requestPt = url + "/api/game/fire?cell=" + cell;
         HttpRequest getRequest = HttpRequest.newBuilder().uri(URI.create(requestPt))
