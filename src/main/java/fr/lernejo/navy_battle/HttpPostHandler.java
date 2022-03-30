@@ -22,7 +22,7 @@ public class HttpPostHandler implements HttpHandler {
         }
     }
     public void Response(HttpExchange httpExchange) throws IOException{
-        String msg = "{\"id\":\"1\", \"url\":\"http://localhost:" + httpExchange.getLocalAddress().getPort() + "\", \"message\":\"Hello!\"}";
+        String msg = "{\"id\":\"1\", \"url\":\"http://localhost:" + this.port + "\", \"message\":\"hello\"}";
         httpExchange.getResponseHeaders().set("Content-type", "application/json");
         httpExchange.sendResponseHeaders(202, msg.length());
         try (OutputStream os = httpExchange.getResponseBody()){
